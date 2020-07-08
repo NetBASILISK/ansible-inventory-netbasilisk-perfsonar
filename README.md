@@ -53,7 +53,7 @@ ansible-playbook \
   ansible-inventory-netbasilisk-perfsonar/playbooks/miserver.yml
 ```
 
-** Management Commands: **
+**Management Commands:**
 
 Display auth interfaces on Archivers:
 
