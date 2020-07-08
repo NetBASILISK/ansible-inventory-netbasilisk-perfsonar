@@ -22,7 +22,7 @@ perfsonar_pwa_fqdn: "{{ inventory_hostname }}"
 # an email address expressly defined will use
 # `username@perfsonar_pwa_user_default_domain` by default.
 #
-perfsonar_pwa_user_default_domain: 
+perfsonar_pwa_user_default_domain: umich.edu
 
 # When perfsonar_pwa_user_purge is True, accounts not listed in
 # perfsonar_pwa_user_list will be deleted.
@@ -40,3 +40,7 @@ perfsonar_pwa_user_list:
 #    password:
 #    password_reset: True
 #    scope: ['user', 'admin']
+  - username: epcjr
+    fullname: Ed Colone
+    password: 
+    scope: ['user', 'admin']

@@ -22,7 +22,9 @@ ansible_become_method=sudo
 netbasilisk-archive.miserver.it.umich.edu
 
 [ps-maddash]
+netbasilisk-maddash.miserver.it.umich.edu
 
 [ps-psconfig-publishers]
 
 [ps-psconfig-web-admin]
+netbasilisk-pwa.miserver.it.umich.edu
