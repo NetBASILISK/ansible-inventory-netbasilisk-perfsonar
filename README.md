@@ -11,18 +11,19 @@ git clone https://github.com/perfsonar/ansible-playbook-perfsonar.git
 cd ansible-playbook-perfsonar
 ```
 
-Get the required roles (ignore errors so we can run this multiple times):
-
-```
-ansible-galaxy install -r requirements.yml --ignore-errors
-ansible-galaxy install --ignore-errors \
-  -r ansible-inventory-netbasilisk-perfsonar/requirements.yml
-```
-
 Clone this inventory in the playbook dir:
 
 ```
 git clone https://github.com/NetBASILISK/ansible-inventory-netbasilisk-perfsonar.git
+```
+
+Get the required roles (ignore errors so we can run this multiple times):
+
+```
+ansible-galaxy install -r requirements.yml --ignore-errors
+ansible-galaxy install \
+  -r ansible-inventory-netbasilisk-perfsonar/requirements.yml\
+  --ignore-errors
 ```
 
 Use Ansible ping to verify connectivity to targets:
