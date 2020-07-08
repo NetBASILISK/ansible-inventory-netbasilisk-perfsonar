@@ -1,0 +1,5 @@
+---
+# ansible-role-miserver-management variables
+
+mcommunity_group_accounts:
+mcommunity_purpose: perfSONAR esmond archive for the NetBASILISK project

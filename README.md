@@ -11,13 +11,15 @@ git clone https://github.com/perfsonar/ansible-playbook-perfsonar.git
 cd ansible-playbook-perfsonar
 ```
 
-Get the required roles (note that we ignore errors so we can run this multiple times):
+Get the required roles (ignore errors so we can run this multiple times):
 
 ```
-ansible-galaxy install -r  requirements.yml --ignore-errors
+ansible-galaxy install -r requirements.yml --ignore-errors
+ansible-galaxy install --ignore-errors \
+  -r ansible-inventory-netbasilisk-perfsonar/requirements.yml
 ```
 
-Clone this inventory in the playbook dir.
+Clone this inventory in the playbook dir:
 
 ```
 git clone https://github.com/NetBASILISK/ansible-inventory-netbasilisk-perfsonar.git
@@ -39,6 +41,35 @@ ansible-playbook \
   --ask-pass --ask-become-pass \
   -i ansible-inventory-netbasilisk-perfsonar/inventory \
   perfsonar.yml
+```
+
+Run the account provisioning playbook for the netbasilisk-perfsonar group:
+
+```
+ansible-playbook \
+  --ask-pass --ask-become-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  ansible-inventory-netbasilisk-perfsonar/playbooks/miserver.yml
+```
+
+# Management Commands:
+
+Display auth interfaces on Archivers:
+
+```
+ansible ps-archives \
+  --ask-pass --ask-become-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  -a "/usr/sbin/esmond_manage list_user_ip_address"
+```
+
+Delete an auth interface on Archivers:
+
+```
+ansible ps-archives \
+  --ask-pass --ask-become-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  -a "/usr/sbin/esmond_manage delete_user_ip_address USERNAME IPADDR"
 ```
 
 ---

@@ -1,0 +1,5 @@
+---
+# ansible-role-miserver-management variables
+
+mcommunity_group_accounts:
+mcommunity_purpose: perfSONAR PWA dashboard for the NetBASILISK project

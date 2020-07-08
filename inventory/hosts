@@ -28,3 +28,6 @@ netbasilisk-maddash.miserver.it.umich.edu
 
 [ps-psconfig-web-admin]
 netbasilisk-pwa.miserver.it.umich.edu
+
+[pscheduler-hosts]
+perfsonar.miserver.it.umich.edu

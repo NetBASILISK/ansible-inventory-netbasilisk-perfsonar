@@ -1,0 +1,2 @@
+# Install perfsonar roles
+- src: https://github.com/UMNET-perfSONAR/ansible-role-miserver-management.git
