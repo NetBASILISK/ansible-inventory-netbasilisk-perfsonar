@@ -2,6 +2,8 @@ playbook for perfSONAR deployment and config
 
 **Quick Start**:
 
+You must have an account on each of the MiServers and be in the not2fa group
+
 Clone the playbook:
 
 ```
