@@ -4,7 +4,8 @@
 # set to yes to pull most recent images
 perfsonar_pwa_docker_pull_image: no
 perfsonar_pwa_docker_config_dir: /etc/docker
-perfsonar_pwa_docker_data_root: /usr/local
+#perfsonar_pwa_docker_data_root: /usr/local
+perfsonar_pwa_docker_data_root: /var/lib/docker
 perfsonar_pwa_docker_network: pwa
 perfsonar_pwa_cert_path: /etc/pwa/nginx/certs
 perfsonar_pwa_email_address: <email_address>

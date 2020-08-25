@@ -35,15 +35,6 @@ ansible all \
   -m ping
 ```
 
-Run the playbook:
-
-```
-ansible-playbook \
-  --ask-pass --ask-become-pass \
-  -i ansible-inventory-netbasilisk-perfsonar/inventory \
-  perfsonar.yml
-```
-
 Run the account provisioning playbook for the netbasilisk-perfsonar group:
 
 ```
@@ -53,7 +44,26 @@ ansible-playbook \
   ansible-inventory-netbasilisk-perfsonar/playbooks/miserver.yml
 ```
 
+Run the perfsonar provisioning playbook:
+
+```
+ansible-playbook \
+  --ask-pass --ask-become-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  perfsonar.yml
+```
+
 # Management Commands:
+
+Deploy only PWA
+
+```
+ansible-playbook \
+  --ask-pass --ask-become-pass \
+  --limit netbasilisk-pwa.miserver.it.umich.edu \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  perfsonar.yml
+```
 
 Display auth interfaces on Archivers:
 

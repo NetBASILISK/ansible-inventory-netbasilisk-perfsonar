@@ -2,4 +2,5 @@
 # ansible-role-miserver-management variables
 
 mcommunity_group_accounts:
+  - netbasilisk-perfsonar-support
 mcommunity_purpose: perfSONAR MadDash dashboard for the NetBASILISK project
