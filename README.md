@@ -53,7 +53,7 @@ ansible-playbook \
   perfsonar.yml
 ```
 
-# Management Commands:
+**Management Commands:**
 
 Deploy only PWA
 
