@@ -65,6 +65,23 @@ ansible-playbook \
   perfsonar.yml
 ```
 
+Edit PWA users
+
+```
+vi ansible-inventory-netbasilisk-perfsonar/inventory/group_vars/all/perfsonar/ps_pwa.yml
+```
+
+Provision PWA Users only
+
+```
+ansible-playbook \
+  --ask-pass --ask-become-pass \
+  --limit netbasilisk-pwa.miserver.it.umich.edu \
+  --tags ps::pwa_users \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  perfsonar.yml
+```
+
 Display auth interfaces on Archivers:
 
 ```

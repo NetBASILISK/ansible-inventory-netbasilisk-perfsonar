@@ -2,6 +2,7 @@
 # defaults file for perfsonar-psconfig-web-admin
 
 # set to yes to pull most recent images
+perfsonar_pwa_docker_uninstall: True
 perfsonar_pwa_docker_pull_image: no
 perfsonar_pwa_docker_config_dir: /etc/docker
 #perfsonar_pwa_docker_data_root: /usr/local
@@ -44,4 +45,8 @@ perfsonar_pwa_user_list:
   - username: epcjr
     fullname: Ed Colone
     password: 
+    scope: ['user', 'admin']
+  - username: guhitj
+    fullname: Jem Guhit
+    password:  changeme
     scope: ['user', 'admin']
