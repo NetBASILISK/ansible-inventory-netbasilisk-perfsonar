@@ -11,4 +11,7 @@
 #  - address: ip_addr
 #    state: [ present | absent ]
 #    user: perfsonar
-perfsonar_archive_auth_list: []
+perfsonar_archive_auth_list: 
+  - address: 192.41.230.59
+    state: present 
+    user: AGLT2

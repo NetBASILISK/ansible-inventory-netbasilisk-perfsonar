@@ -3,4 +3,6 @@
 # perfsonar_maddash_remotes:
 #   - state: [ present | absent ]
 #   - url: url
-perfsonar_maddash_remotes: []
+perfsonar_maddash_remotes: 
+   - state: present 
+   - url: http://netbasilisk-pwa.miserver.it.umich.edu/pub/config/NetBASILISK

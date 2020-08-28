@@ -50,3 +50,7 @@ perfsonar_pwa_user_list:
     fullname: Jem Guhit
     password:  changeme
     scope: ['user', 'admin']
+  - username: zhenytan
+    fullname: Zhenyu Tan
+    password: passwd
+    scope: ['user']
