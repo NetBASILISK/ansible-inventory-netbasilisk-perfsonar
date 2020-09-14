@@ -55,6 +55,16 @@ ansible-playbook \
 
 **Management Commands:**
 
+Deploy only MadDash
+
+```
+ansible-playbook \
+  --ask-pass --ask-become-pass \
+  --limit ps-maddash \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  perfsonar.yml
+```
+
 Deploy only PWA
 
 ```
@@ -100,4 +110,12 @@ ansible ps-archives \
   -a "/usr/sbin/esmond_manage delete_user_ip_address USERNAME IPADDR"
 ```
 
+Invoke AGLT2 testing
+
+```
+ansible-playbook \
+  --ask-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  ansible-inventory-netbasilisk-perfsonar/playbooks/aglt2.yml
+```
 ---

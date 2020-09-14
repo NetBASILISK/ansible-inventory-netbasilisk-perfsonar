@@ -1,0 +1,40 @@
+# perfsonar account creation
+
+#- name: AGLT2 benchmark testing
+#  include: "../../pscheduler.yml"
+
+- name: AGLT2 benchmark testing
+  hosts: localhost
+  vars:
+    pscheduler_tasks:
+      - task_type: throughput
+        source: BNL
+        dest: psum01
+  tasks:
+  - include: "../../pscheduler.yml"
+
+#
+# Jem Script invoked here
+#
+
+- name: Jem's script
+  hosts: localhost
+  vars:
+    pscheduler_tasks:
+      - task_type: throughput
+        source: BNL
+        dest: psum01
+  tasks:
+  - debug:
+      msg: Run Jem's script
+
+- name: AGLT2 benchmark testing
+  hosts: localhost
+  vars:
+    pscheduler_tasks:
+      - task_type: throughput
+        source: BNL
+        dest: psum01
+  tasks:
+  - include: "../../pscheduler.yml"
+
