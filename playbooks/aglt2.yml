@@ -9,7 +9,7 @@
   hosts: localhost
   vars:
     pscheduler_tasks:
-      - task_type: throughput
+      - task: throughput
         source: BNL
         dest: psum01
   tasks:
@@ -36,7 +36,7 @@
   hosts: localhost
   vars:
     pscheduler_tasks:
-      - task_type: throughput
+      - task: throughput
         source: BNL
         dest: psum01
   tasks:

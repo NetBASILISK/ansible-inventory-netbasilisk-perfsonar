@@ -3,8 +3,29 @@
 #- name: run perfSONAR commands
 #  hosts: pscheduler-hosts
 #  tasks:
+
   - name: debug string
     debug:
       var: item
     with_items: "{{ pscheduler_tasks }}"
 
+
+  - name: run pscheduler command
+
+    command:
+      argv:
+        #- echo
+        - pscheduler
+        - task
+        - "{{ item.task }}"
+        - --dest
+        - "{{ item.dest }}"
+        - --source
+        - "{{ item.source }}"
+    with_items: "{{ pscheduler_tasks }}"
+    #register: echo
+
+  - name: debug string
+    debug:
+      var: echo
+    when: echo is defined
