@@ -3,6 +3,8 @@
 #- name: AGLT2 benchmark testing
 #  include: "../../pscheduler.yml"
 
+# START LOOP
+
 - name: AGLT2 benchmark testing
   hosts: localhost
   vars:
@@ -11,7 +13,7 @@
         source: BNL
         dest: psum01
   tasks:
-  - include: "../../pscheduler.yml"
+  - include: "pscheduler.yml"
 
 #
 # Jem Script invoked here
@@ -28,6 +30,8 @@
   - debug:
       msg: Run Jem's script
 
+# END LOOP
+
 - name: AGLT2 benchmark testing
   hosts: localhost
   vars:
@@ -36,5 +40,5 @@
         source: BNL
         dest: psum01
   tasks:
-  - include: "../../pscheduler.yml"
+  - include: "pscheduler.yml"
 
