@@ -71,6 +71,8 @@ Deploy only PWA
 ansible-playbook \
   --ask-pass --ask-become-pass \
   --limit netbasilisk-pwa.miserver.it.umich.edu \
+  --become --become-user root \
+  --become-method sudo \
   -i ansible-inventory-netbasilisk-perfsonar/inventory \
   perfsonar.yml
 ```
@@ -116,6 +118,6 @@ Invoke AGLT2 testing
 ansible-playbook \
   --ask-pass \
   -i ansible-inventory-netbasilisk-perfsonar/inventory \
-  ansible-inventory-netbasilisk-perfsonar/playbooks/aglt2.yml
+  --extra-vars "test_script=aglt2" \
+  ansible-inventory-netbasilisk-perfsonar/playbooks/testing_loop.yml
 ```
----

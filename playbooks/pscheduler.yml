@@ -4,14 +4,12 @@
 #  hosts: pscheduler-hosts
 #  tasks:
 
-  - name: debug string
+  - name: pcheduler tasks to run
     debug:
       var: item
     with_items: "{{ pscheduler_tasks }}"
 
-
   - name: run pscheduler command
-
     command:
       argv:
         #- echo
@@ -23,9 +21,10 @@
         - --source
         - "{{ item.source }}"
     with_items: "{{ pscheduler_tasks }}"
-    #register: echo
+    register: pcheduler_output
+    when: false
 
   - name: debug string
     debug:
-      var: echo
-    when: echo is defined
+      var: pcheduler_output
+    when: pcheduler_output is defined

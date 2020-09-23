@@ -3,42 +3,23 @@
 #- name: AGLT2 benchmark testing
 #  include: "../../pscheduler.yml"
 
-# START LOOP
+- name: AGLT2 facts
+  set_fact:
+    pscheduler_tasks:
+      - task: latency
+        source: lhcmon.bnl.gov
+        #dest: psum01.aglt2.org
+        dest: perfsonar-bin-arbl.umnet.umich.edu
 
 - name: AGLT2 benchmark testing
-  hosts: localhost
-  vars:
-    pscheduler_tasks:
-      - task: throughput
-        source: BNL
-        dest: psum01
-  tasks:
-  - include: "pscheduler.yml"
+  include_tasks: pscheduler.yml
 
 #
 # Jem Script invoked here
 #
 
 - name: Jem's script
-  hosts: localhost
-  vars:
-    pscheduler_tasks:
-      - task_type: throughput
-        source: BNL
-        dest: psum01
-  tasks:
-  - debug:
-      msg: Run Jem's script
-
-# END LOOP
-
-- name: AGLT2 benchmark testing
-  hosts: localhost
-  vars:
-    pscheduler_tasks:
-      - task: throughput
-        source: BNL
-        dest: psum01
-  tasks:
-  - include: "pscheduler.yml"
-
+  #hosts: localhost
+  #tasks:
+  debug:
+    msg: Run Jem's script

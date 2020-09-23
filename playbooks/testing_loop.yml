@@ -1,0 +1,14 @@
+# perfsonar account creation
+
+#- name: AGLT2 benchmark testing
+#  include: "../../pscheduler.yml"
+
+- name: interlace pcheduler testing with scripts
+  hosts: localhost
+  tasks:
+  - name: interlace pScheduler testing with aglt2 scripts
+    include_tasks: "{{ test_script }}.yml"
+    with_sequence: count=2
+
+  - name: last pScheduler testing with aglt2 scripts
+    include_tasks: pscheduler.yml
