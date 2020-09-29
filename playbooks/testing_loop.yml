@@ -3,12 +3,14 @@
 #- name: AGLT2 benchmark testing
 #  include: "../../pscheduler.yml"
 
-- name: interlace pcheduler testing with scripts
+- name: run pScheduler testing interlaced with test scripts
   hosts: localhost
   tasks:
-  - name: interlace pScheduler testing with aglt2 scripts
+  - name: "pcheduler loop testing iteration {{ item }}"
     include_tasks: "{{ test_script }}.yml"
-    with_sequence: count=2
+    with_sequence: "count={{ test_loop_count | default (1) }}"
+    loop_control:
+      loop_var: loop_number
 
   - name: last pScheduler testing with aglt2 scripts
-    include_tasks: pscheduler.yml
+    include_tasks: pscheduler_loop.yml

@@ -1,0 +1,16 @@
+# pscheduler.yml
+
+#- name: run perfSONAR commands
+#  hosts: pscheduler-hosts
+#  tasks:
+
+#  - name: "debug info"
+#    debug:
+#      var: item
+
+  - name: "pscheduler tasks:"
+    include_tasks: pscheduler.yml
+    with_items: "{{ pscheduler_tasks }}"
+    #loop_control:
+    #  loop_var: task
+    #when: false

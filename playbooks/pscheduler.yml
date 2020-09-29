@@ -4,12 +4,16 @@
 #  hosts: pscheduler-hosts
 #  tasks:
 
-  - name: pcheduler tasks to run
+#  - name: "debug info"
+#    debug:
+#      var: item
+#    with_items: "{{ pscheduler_tasks }}"
+
+  - name: "debug info"
     debug:
       var: item
-    with_items: "{{ pscheduler_tasks }}"
 
-  - name: run pscheduler command
+  - name: "pscheduler task {{ item.task }} --dest {{ item.dest }} --source {{ item.source }}"
     command:
       argv:
         #- echo
@@ -20,11 +24,10 @@
         - "{{ item.dest }}"
         - --source
         - "{{ item.source }}"
-    with_items: "{{ pscheduler_tasks }}"
     register: pcheduler_output
-    when: false
+    when: "{{ test_loop_debug | default ( True ) }}"
 
-  - name: debug string
+  - name: "pscheduler result"
     debug:
       var: pcheduler_output
     when: pcheduler_output is defined

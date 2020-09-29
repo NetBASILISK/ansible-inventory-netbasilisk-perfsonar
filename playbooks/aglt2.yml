@@ -3,7 +3,7 @@
 #- name: AGLT2 benchmark testing
 #  include: "../../pscheduler.yml"
 
-- name: AGLT2 facts
+- name: "iteration {{ loop_number }}: set facts"
   set_fact:
     pscheduler_tasks:
       - task: latency
@@ -11,14 +11,14 @@
         #dest: psum01.aglt2.org
         dest: perfsonar-bin-arbl.umnet.umich.edu
 
-- name: AGLT2 benchmark testing
-  include_tasks: pscheduler.yml
+- name: "iteration {{ loop_number }}: pScheduler testing"
+  include_tasks: pscheduler_loop.yml
 
 #
 # Jem Script invoked here
 #
 
-- name: Jem's script
+- name: "iteration {{ loop_number }}: run script"
   #hosts: localhost
   #tasks:
   debug:

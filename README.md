@@ -118,6 +118,6 @@ Invoke AGLT2 testing
 ansible-playbook \
   --ask-pass \
   -i ansible-inventory-netbasilisk-perfsonar/inventory \
-  --extra-vars "test_script=aglt2" \
+  --extra-vars "test_script=aglt2 test_loop_count=2" \
   ansible-inventory-netbasilisk-perfsonar/playbooks/testing_loop.yml
 ```
