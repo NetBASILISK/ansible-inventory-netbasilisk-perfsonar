@@ -19,7 +19,7 @@
 #
 
 - name: "iteration {{ loop_number }}: run script"
-  #hosts: localhost
-  #tasks:
-  debug:
-    msg: Run Jem's script
+  #command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/main.sh
+  command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/ansible.sh
+  delegate_to: "{{ item }}"
+  with_items: "{{ groups['pscheduler-hosts'] | default([]) }}"

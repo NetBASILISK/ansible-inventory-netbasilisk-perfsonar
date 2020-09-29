@@ -31,3 +31,6 @@ netbasilisk-pwa.miserver.it.umich.edu
 
 [pscheduler-hosts]
 perfsonar.miserver.it.umich.edu
+
+[aglt2-hosts]
+psum01.aglt2.org
