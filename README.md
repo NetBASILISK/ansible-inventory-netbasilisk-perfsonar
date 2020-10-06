@@ -99,6 +99,7 @@ Display auth interfaces on Archivers:
 ```
 ansible ps-archives \
   --ask-pass --ask-become-pass \
+  --become-user root --become \
   -i ansible-inventory-netbasilisk-perfsonar/inventory \
   -a "/usr/sbin/esmond_manage list_user_ip_address"
 ```

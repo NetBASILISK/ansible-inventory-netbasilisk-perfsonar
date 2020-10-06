@@ -28,3 +28,14 @@
   #command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/ansible.sh
   delegate_to: "{{ item }}"
   with_items: "{{ groups['aglt2-hosts'] | default([]) }}"
+
+- name: "get runcontrol.sh PID"
+  pids:
+    name: runcontrol.sh
+  register: run_pids
+
+- name: "iteration {{ loop_number }}: wait for run_control.sh"
+  wait_for:
+    path: "/proc/{{ item }}/status"
+    state: absent
+  with_items: "{{ run_pids.pids }}"
