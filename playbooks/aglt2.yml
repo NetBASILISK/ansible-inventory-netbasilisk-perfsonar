@@ -30,12 +30,11 @@
   with_items: "{{ groups['aglt2-hosts'] | default([]) }}"
 
 - name: "get runcontrol.sh PID"
-  pids:
-    name: runcontrol.sh
+  shell: "ps -few | grep run_control | awk '{print $2}'"
   register: run_pids
 
 - name: "iteration {{ loop_number }}: wait for run_control.sh"
   wait_for:
     path: "/proc/{{ item }}/status"
     state: absent
-  with_items: "{{ run_pids.pids }}"
+  with_items: "{{ run_pids.stdout_lines }}"
