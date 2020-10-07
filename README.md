@@ -122,3 +122,26 @@ ansible-playbook \
   --extra-vars "test_script=aglt2 test_loop_count=2" \
   ansible-inventory-netbasilisk-perfsonar/playbooks/testing_loop.yml
 ```
+
+Invoke LSI testing
+1. bootstrap playbook / roles / inventory
+2. set up access to LSI work node / DTN (test with ansible ping)
+3. add LSI host to ansible-inventory-netbasilisk-perfsonar/inventory/hosts
+4. edit ansible-inventory-netbasilisk-perfsonar/playbooks/lsi.yml
+5. 
+
+
+```
+ansible lsi-hosts \
+  --ask-pass --ask-become-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  -m ping
+```
+
+```
+ansible-playbook \
+  --ask-pass \
+  -i ansible-inventory-netbasilisk-perfsonar/inventory \
+  --extra-vars "test_script=lsi test_loop_count=2" \
+  ansible-inventory-netbasilisk-perfsonar/playbooks/testing_loop.yml
+```

@@ -1,0 +1,41 @@
+# perfsonar account creation
+
+#- name: LSI benchmark testing
+#  include: "../../pscheduler.yml"
+
+- name: "iteration {{ loop_number }}: set facts"
+  set_fact:
+    pscheduler_tasks:
+    #  - task: latency
+    #    source: lhcmon.bnl.gov
+    #    dest: psum01.aglt2.org
+    #    #dest: perfsonar-bin-arbl.umnet.umich.edu
+      - task: latency
+        source: lhcmon.bnl.gov
+        #dest: psum01.aglt2.org
+        dest: perfsonar-bin-arbl.umnet.umich.edu
+
+- name: "iteration {{ loop_number }}: pScheduler testing"
+  include_tasks: pscheduler_loop.yml
+  when: false
+#when: false skips the perfsonar test 
+#
+# Jem Script invoked here
+#
+
+- name: "iteration {{ loop_number }}: run script"
+  command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/main.sh
+  #command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/ansible.sh
+  delegate_to: "{{ item }}"
+  with_items: "{{ groups['aglt2-hosts'] | default([]) }}"
+  register: run_pid
+
+- name: "print run_pid"
+  debug:
+    var: run_pid
+
+- name: "iteration {{ loop_number }}: wait for run_control.sh"
+  wait_for:
+    path: "/proc/{{ item }}/status"
+    state: absent
+  with_items: "{{ run_pid.stdout_lines }}"

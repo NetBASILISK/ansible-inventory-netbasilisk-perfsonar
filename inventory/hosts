@@ -32,6 +32,8 @@ netbasilisk-pwa.miserver.it.umich.edu
 [pscheduler-hosts]
 perfsonar.miserver.it.umich.edu
 
+[lsi-hosts]
+
 [aglt2-hosts]
 #psum01.aglt2.org
 umt3int05.physics.lsa.umich.edu
