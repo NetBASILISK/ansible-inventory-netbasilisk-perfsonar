@@ -33,6 +33,7 @@ netbasilisk-pwa.miserver.it.umich.edu
 perfsonar.miserver.it.umich.edu
 
 [lsi-hosts]
+login.hpc.lsi.umich.edu
 
 [aglt2-hosts]
 #psum01.aglt2.org
