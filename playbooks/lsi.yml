@@ -6,14 +6,9 @@
 - name: "iteration {{ loop_number }}: set facts"
   set_fact:
     pscheduler_tasks:
-    #  - task: latency
-    #    source: lhcmon.bnl.gov
-    #    dest: psum01.aglt2.org
-    #    #dest: perfsonar-bin-arbl.umnet.umich.edu
       - task: latency
-        source: lhcmon.bnl.gov
-        #dest: psum01.aglt2.org
-        dest: perfsonar-bin-arbl.umnet.umich.edu
+        source: test10g.lsi.umich.edu 
+        dest: 192.67.81.132
 
 - name: "iteration {{ loop_number }}: pScheduler testing"
   include_tasks: pscheduler_loop.yml
@@ -24,18 +19,11 @@
 #
 
 - name: "iteration {{ loop_number }}: run script"
-  command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/main.sh
-  #command: /lustre/umt3/user/guhitj/Gitlab/netbasilisk/XRootD/ansible.sh
+  command: /lsi/groups/mcianfroccolab/zhenyutan/data_transfer.sh 
   delegate_to: "{{ item }}"
-  with_items: "{{ groups['aglt2-hosts'] | default([]) }}"
-  register: run_pid
+  with_items: "{{ groups['lsi-hosts'] | default([]) }}"
+  register: lsi_output
 
-- name: "print run_pid"
+- name: print lsi_output
   debug:
-    var: run_pid
-
-- name: "iteration {{ loop_number }}: wait for run_control.sh"
-  wait_for:
-    path: "/proc/{{ item }}/status"
-    state: absent
-  with_items: "{{ run_pid.stdout_lines }}"
+    var: lsi_output
